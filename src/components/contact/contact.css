@@ -5,6 +5,11 @@
     grid-template-columns: 30% 58.5%;
 }
 
+.swal2-timerprogress-bar.custom-timer-progress-bar {
+    background-color: green !important;
+  }
+  
+
 .contact_options{
     display: flex;
     flex-direction: column;

@@ -1,23 +1,41 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import Swal from 'sweetalert2';
 import './contact.css';
 import { MdOutlineEmail } from "react-icons/md";
 import { RiMessengerLine } from "react-icons/ri";
 import { BsWhatsapp } from "react-icons/bs";
 import emailjs from '@emailjs/browser';
 
-
-function Contact() { 
+function Contact() {
   const form = useRef();
+  const [isFormValid, setIsFormValid] = useState(true);
 
   const sendEmail = (e) => {
     e.preventDefault();
+
+    const formData = new FormData(form.current);
+    if (!formData.get("name") || !formData.get("email") || !formData.get("message")) {
+      setIsFormValid(false);
+      return;
+    }
+    setIsFormValid(true);
 
     emailjs
       .sendForm('service_hsdpnzg', 'template_pw9aw4e', form.current, 'qHYF2CATMV9BARHIr')
       .then(
         (result) => {
           console.log("Email sent successfully!", result.text);
-          e.target.reset(); // إعادة تعيين النموذج بعد نجاح الإرسال
+          e.target.reset();
+
+          Swal.fire({
+            icon: 'success',
+            confirmButtonText: 'Ok',
+            timer: 1000,
+            width:"10%",
+            position: 'top',
+            timerProgressBar: 'custom-timer-progress-bar',
+            showConfirmButton: false,
+          });
         },
         (error) => {
           console.error("Failed to send email:", error.text);
@@ -70,8 +88,15 @@ function Contact() {
           <input type="text" placeholder="Full Name" name="name" required />
           <input type="email" placeholder="Your Email" name="email" required />
           <textarea rows={6} name="message" placeholder="Enter Your Message" required></textarea>
-          <button type="submit" className="btn btn-primary">Send Message</button> {/* ✅ إضافة type="submit" */}
+          <button type="submit" className="btn btn-primary">
+            Send Message
+          </button>
         </form>
+        {!isFormValid && (
+          <p style={{ color: 'red', textAlign: 'center' }}>
+            Please fill in all fields before sending the message.
+          </p>
+        )}
       </div>
     </section>
   );
