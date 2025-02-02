@@ -30,11 +30,23 @@ function Contact() {
           Swal.fire({
             icon: 'success',
             confirmButtonText: 'Ok',
-            timer: 1000,
-            width:"10%",
+            timer: 2000,
             position: 'top',
-            timerProgressBar: 'custom-timer-progress-bar',
-            showConfirmButton: false,
+            timerProgressBar: true,
+            showConfirmButton: false, 
+            customClass: {
+              popup: 'custom-popup', 
+            },
+            didOpen: () => {
+              const width = window.innerWidth;
+              if (width <= 768) {
+                Swal.getPopup().style.width = '90%'; 
+                Swal.getPopup().style.fontSize = '1.2rem'; 
+              } else {
+                Swal.getPopup().style.width = '400px'; 
+                Swal.getPopup().style.fontSize = '1.5rem';
+              }
+            }
           });
         },
         (error) => {
@@ -62,8 +74,8 @@ function Contact() {
       id: 3,
       icon: <BsWhatsapp />,
       title: "WhatsApp",
-      info: "+20101626452", 
-      link: "https://api.whatsapp.com/send?phone=+20101626452", 
+      info: "+20101626452",
+      link: "https://api.whatsapp.com/send?phone=+20101626452",
     },
   ];
 
