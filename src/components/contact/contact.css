@@ -1,0 +1,112 @@
+.contact_container{
+    width: 60%;
+    gap: 12%;
+    display: grid;
+    grid-template-columns: 30% 58.5%;
+}
+
+.contact_options{
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.contact_option{
+    background: var(--color-bg-variant);
+    padding: 1.2rem;
+    border-radius: 1.2rem;
+    text-align: center;
+    border: 1px solid transparent;
+    transition: var(--transition);
+    font-size: 14px;
+}
+
+.contact_option:hover{
+    border-color: var(--color-primary-variant);
+    background: transparent;
+}
+
+.contact_option svg{
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+    margin: 0 auto 8px;
+}
+
+.contact_option a{
+    margin-top: 0.7rem;
+    font-size: 17px;
+    display: inline-block;
+}
+
+.contact_container form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact_container form input,
+.contact_container form textarea{
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    background: transparent;
+    border: 2px solid transparent;
+    resize: none;
+    border: 1px solid;
+    color: var(--color-primary);
+}
+
+.contact_container form input{
+    height: 40px;
+}
+
+.contact_container form input:hover,
+.contact_container textarea:hover{
+    color: var(--color-white);
+}
+
+.contact_container form button{
+    font-size: 18px;
+    padding: 14px 30px;
+}
+
+@media(max-width: 1024px){
+    .contact_container{
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        width: 80%;
+    }
+}
+
+@media(max-width: 768px){
+    .contact_container{
+        width: 90%;
+    }
+    .contact_option{
+        width: 100%;
+    }
+    .contact_container form{
+        width: 100%;
+    }
+    .contact_container form button {
+        width: 100%;
+    }
+}
+
+@media(max-width: 480px){
+    .contact_container{
+        width: 95%;
+    }
+    .contact_option{
+        width: 100%;
+        padding: 1rem;
+    }
+    .contact_container form{
+        width: 100%;
+    }
+    .contact_container form button{
+        width: 100%;
+        padding: 12px;
+    }
+}
