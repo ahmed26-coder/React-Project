@@ -75,7 +75,7 @@ function Contact() {
       icon: <BsWhatsapp />,
       title: "WhatsApp",
       info: "+20101626452",
-      link: "https://api.whatsapp.com/send?phone=+20101626452",
+      link: "https://api.whatsapp.com/send?phone=201016626452",
     },
   ];
 
